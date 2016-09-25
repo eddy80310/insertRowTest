@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         myTableView.delegate = self
         myTableView.dataSource = self
+        myTableView.estimatedSectionHeaderHeight = 260
         
         // Register Xib
         let nib = UINib(nibName: "myHeaderView", bundle: nil)
@@ -35,8 +36,6 @@ class ViewController: UIViewController {
         numberOfSection += 1
         let sections = NSIndexSet(index: numberOfSection - 1)
         myTableView.insertSections(sections, withRowAnimation: .None)
-        
-        
     }
     
 }
@@ -62,7 +61,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 260
+        return UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
